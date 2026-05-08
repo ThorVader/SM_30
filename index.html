@@ -3,7 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>The 30th Move | Siyabonga Mathibela</title>
+  <meta name="description" content="An exquisite black elegance affair celebrating Siyabonga Mathibela's 30th birthday dinner at The Rasmus Guest House, Pretoria." />
+
+  <meta property="og:title" content="The 30th Move | Siyabonga Mathibela" />
+  <meta property="og:description" content="You are warmly invited to an exquisite evening celebrating Siyabonga Mathibela's 30th birthday." />
+  <meta property="og:image" content="assets/images/hero/23502.png" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preload" as="image" href="assets/images/hero/23502.png" />
 
   <style>
     *{
@@ -14,12 +23,10 @@
 
     :root{
       --black:#050505;
-      --charcoal:#101010;
       --white:#f8f5ef;
       --soft-white:#d8d4cc;
       --muted:#9b948b;
       --red:#8f1218;
-      --deep-red:#350609;
       --line:rgba(255,255,255,.13);
     }
 
@@ -39,10 +46,26 @@
       position:fixed;
       inset:0;
       background:
-      radial-gradient(circle at 50% 0%, rgba(143,18,24,.28), transparent 34%),
-      radial-gradient(circle at 12% 80%, rgba(255,255,255,.06), transparent 28%);
+        radial-gradient(circle at 50% 0%, rgba(143,18,24,.24), transparent 34%),
+        radial-gradient(circle at 12% 80%, rgba(255,255,255,.06), transparent 28%);
       pointer-events:none;
       z-index:-1;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    a{
+      color:inherit;
+    }
+
+    button,
+    input,
+    textarea,
+    select{
+      font:inherit;
     }
 
     .shell{
@@ -50,55 +73,51 @@
       margin:auto;
     }
 
-    /* HERO */
-
     .hero{
       position:relative;
       min-height:100vh;
+      min-height:100svh;
       display:flex;
       align-items:center;
-      padding:0 0 42px 0;
+      overflow:hidden;
+      isolation:isolate;
     }
 
     .hero-visual{
       position:absolute;
       inset:0;
       background:
-      linear-gradient(180deg, rgba(0,0,0,.3), rgba(0,0,0,.8)),
-      url('assets/images/hero/23502.png') center/cover no-repeat;
-      transform: scaleX(-1);
+        linear-gradient(90deg, rgba(0,0,0,.88) 0%, rgba(0,0,0,.58) 45%, rgba(0,0,0,.2) 100%),
+        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.78)),
+        url("assets/images/hero/23502.png") center/cover no-repeat;
+      transform:scaleX(-1);
+      z-index:-2;
     }
-
-    .hero-content{
-      position:relative;
-      z-index:1;
-      padding:clamp(34px, 6vw, 76px);
-      color:var(--white);
-    }
-
 
     .hero-visual::before{
       content:"";
       position:absolute;
       inset:0;
       background:
-      linear-gradient(90deg, rgba(0,0,0,.28), rgba(0,0,0,.78)),
-      repeating-conic-gradient(from 45deg,
-      rgba(255,255,255,.08) 0% 25%,
-      transparent 0% 50%) 50% / 86px 86px;
+        repeating-conic-gradient(
+          from 45deg,
+          rgba(255,255,255,.08) 0% 25%,
+          transparent 0% 50%
+        ) 50% / 86px 86px;
       mix-blend-mode:screen;
-      opacity:.38;
+      opacity:.3;
     }
 
     .hero-content{
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
+      position:relative;
+      z-index:1;
+      width:min(760px, 100%);
       padding:clamp(34px, 6vw, 76px);
+      color:var(--white);
     }
 
     .kicker{
-      color:var(--red);
+      color:#d83d43;
       text-transform:uppercase;
       letter-spacing:5px;
       font-size:12px;
@@ -107,12 +126,13 @@
     }
 
     h1{
-      font-family:Georgia, 'Times New Roman', serif;
+      font-family:Georgia, "Times New Roman", serif;
       font-size:clamp(58px, 9vw, 118px);
       line-height:.88;
       font-weight:400;
-      letter-spacing:-4px;
+      letter-spacing:-3px;
       margin-bottom:24px;
+      text-wrap:balance;
     }
 
     .hero-copy{
@@ -148,20 +168,26 @@
       line-height:1.55;
     }
 
-    /* COUNTDOWN */
+    .meta-item a{
+      color:var(--soft-white);
+      text-decoration:none;
+    }
+
+    .meta-item a:hover{
+      color:var(--white);
+      text-decoration:underline;
+    }
 
     .countdown{
       display:flex;
-      justify-content:center;
       align-items:flex-end;
-      gap:24px;
+      gap:18px;
       margin:10px 0 34px;
       width:min(100%, 860px);
       max-width:860px;
-      font-family:Georgia, 'Times New Roman', serif;
+      font-family:Georgia, "Times New Roman", serif;
       font-size:clamp(30px, 5vw, 50px);
       font-weight:400;
-      padding:0 10px;
     }
 
     .countdown-unit{
@@ -180,7 +206,7 @@
 
     .countdown-unit span{
       color:var(--soft-white);
-      font-size:0.35em;
+      font-size:.35em;
       text-transform:uppercase;
       letter-spacing:1.5px;
       line-height:1.2;
@@ -190,9 +216,8 @@
       color:var(--white);
       font-size:clamp(30px, 5vw, 54px);
       line-height:1;
+      padding-bottom:.45em;
     }
-
-    /* BUTTONS */
 
     .button-row{
       display:flex;
@@ -215,9 +240,11 @@
       font-weight:700;
       border:1px solid var(--white);
       transition:.25s ease;
+      cursor:pointer;
     }
 
-    .btn:hover{
+    .btn:hover,
+    .btn:focus-visible{
       transform:translateY(-2px);
       background:var(--red);
       border-color:var(--red);
@@ -229,7 +256,12 @@
       color:var(--white);
     }
 
-    /* SECTIONS */
+    .btn.secondary:hover,
+    .btn.secondary:focus-visible{
+      background:var(--white);
+      color:var(--black);
+      border-color:var(--white);
+    }
 
     .section{
       padding:82px 0;
@@ -245,7 +277,7 @@
     }
 
     .section-number{
-      color:var(--red);
+      color:#d83d43;
       font-size:12px;
       text-transform:uppercase;
       letter-spacing:4px;
@@ -254,11 +286,12 @@
     }
 
     h2{
-      font-family:Georgia, 'Times New Roman', serif;
+      font-family:Georgia, "Times New Roman", serif;
       font-size:clamp(36px, 6vw, 76px);
       font-weight:400;
       line-height:1;
       letter-spacing:-2px;
+      text-wrap:balance;
     }
 
     .lead{
@@ -266,8 +299,6 @@
       line-height:1.9;
       max-width:680px;
     }
-
-    /* ACCORDION */
 
     .accordion{
       display:grid;
@@ -277,6 +308,7 @@
     .accordion-item{
       border:1px solid var(--line);
       background:rgba(255,255,255,.028);
+      overflow:hidden;
     }
 
     .accordion-button{
@@ -288,22 +320,24 @@
       display:flex;
       justify-content:space-between;
       align-items:center;
+      gap:18px;
       cursor:pointer;
       text-align:left;
-      font-family:Georgia, 'Times New Roman', serif;
+      font-family:Georgia, "Times New Roman", serif;
       font-size:clamp(24px, 4vw, 40px);
     }
 
     .accordion-button span{
+      flex:0 0 auto;
       font-size:32px;
-      color:var(--red);
+      color:#d83d43;
       transition:transform .25s ease;
     }
 
     .accordion-content{
       max-height:0;
       overflow:hidden;
-      transition:max-height .35s ease;
+      transition:max-height .4s ease;
     }
 
     .accordion-inner{
@@ -313,14 +347,26 @@
     }
 
     .accordion-item.active .accordion-content{
-      max-height:1800px;
+      max-height:7000px;
+      background:var(--white);
+      border-top:1px solid rgba(0,0,0,.1);
+      color:var(--black);
+    }
+
+    .accordion-item.active .accordion-inner{
+      color:var(--black);
+      padding-top:24px;
+    }
+
+    .accordion-item.active .accordion-inner p,
+    .accordion-item.active .accordion-inner a,
+    .accordion-item.active .journey-text{
+      color:var(--black);
     }
 
     .accordion-item.active .accordion-button span{
       transform:rotate(45deg);
     }
-
-    /* JOURNEY */
 
     .journey-text{
       max-width:860px;
@@ -330,7 +376,15 @@
       padding-left:22px;
     }
 
-    /* LOOKBOOK */
+    .featured-lookbook img{
+      width:100%;
+      aspect-ratio:16 / 10;
+      object-fit:cover;
+      object-position:center 28%;
+      border:1px solid var(--line);
+      border-radius:6px;
+      margin:20px 0;
+    }
 
     .image-collage{
       display:grid;
@@ -344,16 +398,12 @@
       aspect-ratio:1 / 1.25;
       object-fit:cover;
       border:1px solid var(--line);
-      filter:grayscale(100%) contrast(1.05);
       transition:.28s ease;
     }
 
     .image-collage img:hover{
-      filter:grayscale(20%) contrast(1.05);
       transform:translateY(-3px);
     }
-
-    /* GALLERY */
 
     .gallery-grid{
       display:grid;
@@ -373,6 +423,7 @@
 
     .gallery-grid img:hover{
       transform:translateY(-2px);
+      filter:brightness(1.08);
     }
 
     .gallery-grid img:nth-child(1){
@@ -389,7 +440,7 @@
       display:none;
       justify-content:center;
       align-items:center;
-      background:rgba(0,0,0,.88);
+      background:rgba(0,0,0,.9);
       z-index:9999;
       padding:20px;
     }
@@ -431,6 +482,16 @@
       justify-content:center;
       align-items:center;
       font-size:22px;
+      transition:.25s ease;
+    }
+
+    .lightbox-close:hover,
+    .lightbox-prev:hover,
+    .lightbox-next:hover,
+    .lightbox-close:focus-visible,
+    .lightbox-prev:focus-visible,
+    .lightbox-next:focus-visible{
+      background:var(--red);
     }
 
     .lightbox-close{
@@ -439,7 +500,6 @@
       transform:none;
       width:40px;
       height:40px;
-      border-radius:50%;
       font-size:20px;
     }
 
@@ -451,32 +511,19 @@
       right:-70px;
     }
 
-    @media(max-width:860px){
-      .lightbox-prev,
-      .lightbox-next{
-        display:none;
-      }
-
-      .lightbox-content{
-        width:100%;
-      }
-    }
-
-    /* RSVP */
-
     .rsvp-card{
-      border:1px solid var(--line);
+      border:1px solid rgba(0,0,0,.12);
       padding:clamp(24px, 5vw, 46px);
       text-align:center;
       background:
-      linear-gradient(135deg, rgba(143,18,24,.14), transparent 42%),
-      rgba(255,255,255,.03);
+        linear-gradient(135deg, rgba(143,18,24,.1), transparent 42%),
+        rgba(0,0,0,.035);
     }
 
     .rsvp-card p{
       max-width:660px;
       margin:0 auto 24px;
-      color:var(--soft-white);
+      color:inherit;
       line-height:1.9;
     }
 
@@ -489,21 +536,132 @@
       letter-spacing:1px;
     }
 
-    /* MOBILE */
-
     @media(max-width:860px){
+      .hero{
+        min-height:100vh;
+        min-height:100svh;
+        align-items:flex-end;
+      }
 
-      .section-head{
-        grid-template-columns:1fr;
+      .hero-visual{
+        background:
+          linear-gradient(180deg, rgba(0,0,0,.28) 0%, rgba(0,0,0,.18) 28%, rgba(0,0,0,.86) 76%, rgba(0,0,0,.96) 100%),
+          linear-gradient(90deg, rgba(0,0,0,.56), rgba(0,0,0,.14)),
+          url("assets/images/hero/23502.png") 58% center/cover no-repeat;
+      }
+
+      .hero-visual::before{
+        opacity:.18;
+        background:
+          repeating-conic-gradient(
+            from 45deg,
+            rgba(255,255,255,.07) 0% 25%,
+            transparent 0% 50%
+          ) 50% / 64px 64px;
+      }
+
+      .hero-content{
+        width:100%;
+        padding:72px 17px 28px;
+      }
+
+      .kicker{
+        letter-spacing:3px;
+        font-size:11px;
+        margin-bottom:14px;
+      }
+
+      h1{
+        font-size:clamp(48px, 17vw, 72px);
+        letter-spacing:-1.5px;
+        margin-bottom:18px;
+      }
+
+      .hero-copy{
+        max-width:100%;
+        font-size:13px;
+        line-height:1.7;
+      }
+
+      .meta-list{
+        max-width:100%;
+        gap:14px;
+        margin:22px 0;
+      }
+
+      .meta-item{
+        padding-left:12px;
+      }
+
+      .meta-item strong{
+        font-size:15px;
+      }
+
+      .meta-item span{
+        font-size:13px;
       }
 
       .countdown{
-        font-size:24px;
+        display:grid;
+        grid-template-columns:repeat(4, minmax(0, 1fr));
+        gap:8px;
+        width:100%;
+        max-width:100%;
+        font-size:clamp(24px, 9vw, 40px);
+        margin:0 0 24px;
+      }
+
+      .countdown-unit{
+        min-width:0;
+        gap:5px;
+      }
+
+      .countdown-unit span{
+        font-size:10px;
+        letter-spacing:.8px;
+      }
+
+      .countdown-separator{
+        display:none;
+      }
+
+      .button-row{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:8px;
+      }
+
+      .btn{
+        min-height:46px;
+        padding:0 12px;
+        font-size:11px;
+        letter-spacing:1.4px;
+      }
+
+      .section{
+        padding:60px 0;
+      }
+
+      .section-head{
+        grid-template-columns:1fr;
+        gap:18px;
+      }
+
+      .accordion-button{
+        padding:20px;
+      }
+
+      .accordion-inner{
+        padding:0 20px 24px;
       }
 
       .image-collage,
       .gallery-grid{
         grid-template-columns:1fr;
+      }
+
+      .gallery-grid img{
+        min-height:240px;
       }
 
       .gallery-grid img:nth-child(1),
@@ -512,40 +670,43 @@
         grid-row:auto;
       }
 
-      .hero-content{
-        padding:34px 22px;
+      .lightbox{
+        padding:12px;
+      }
+
+      .lightbox-prev,
+      .lightbox-next{
+        display:none;
+      }
+
+      .lightbox-content{
+        width:100%;
+        max-width:100%;
       }
     }
-
   </style>
 </head>
 
 <body>
-
-  <!-- HERO -->
-
   <header class="hero">
-
-    <div class="hero-visual"></div>
+    <div class="hero-visual" aria-hidden="true"></div>
 
     <div class="hero-content">
-
       <p class="kicker">You are warmly invited</p>
 
-      <h1>The 30th<br>Move</h1>
+      <h1>The 30th<br />Move</h1>
 
       <p class="hero-copy">
-        To an exquisite evening of celebration as we honour a remarkable milestone —
-        Siyabonga Mathibela’s 30th Birthday Dinner.
+        To an exquisite evening of celebration as we honour a remarkable milestone:
+        Siyabonga Mathibela's 30th Birthday Dinner.
       </p>
 
       <div class="meta-list">
-
         <div class="meta-item">
           <strong>Venue</strong>
           <span>
-            <a href="https://maps.google.com/maps/place//data=!4m2!3m1!1s0x1e9567a83f1c5bc1:0xb6b83e5d74c6163f?entry=s&sa=X&ved=2ahUKEwjeyczCxaeUAxUUTkEAHeOgI_AQ4kB6BAgUEAA&hl=en" target="_blank" style="color: var(--soft-white); text-decoration: none;">
-              The Rasmus Guest House<br>
+            <a href="https://maps.google.com/maps/place//data=!4m2!3m1!1s0x1e9567a83f1c5bc1:0xb6b83e5d74c6163f?entry=s&amp;sa=X&amp;ved=2ahUKEwjeyczCxaeUAxUUTkEAHeOgI_AQ4kB6BAgUEAA&amp;hl=en" target="_blank" rel="noopener">
+              The Rasmus Guest House<br />
               Van Ryneveld Ave, Erasmus Park, Pretoria
             </a>
           </span>
@@ -559,10 +720,10 @@
         <div class="meta-item">
           <strong>Times</strong>
           <span>
-            Arrival: 15:00 – 15:30<br>
-            Golden Hour: 16:00 – 17:00<br>
-            Dinner: 17:00 – 20:00<br>
-            The Hangout: 20:00 – 00:00
+            Arrival: 15:00 - 15:30<br />
+            Golden Hour: 16:00 - 17:00<br />
+            Dinner: 17:00 - 20:00<br />
+            The Hangout: 20:00 - 00:00
           </span>
         </div>
 
@@ -570,60 +731,47 @@
           <strong>Theme</strong>
           <span>Black Elegance</span>
         </div>
-
       </div>
 
-        <!-- COUNTDOWN -->
-
-        <div class="countdown" id="countdown">
-
-          <div class="countdown-unit">
-            <strong id="days">00</strong>
-            <span>Days</span>
-          </div>
-
-          <span class="countdown-separator">:</span>
-
-          <div class="countdown-unit">
-            <strong id="hours">00</strong>
-            <span>Hours</span>
-          </div>
-
-          <span class="countdown-separator">:</span>
-
-          <div class="countdown-unit">
-            <strong id="minutes">00</strong>
-            <span>Minutes</span>
-          </div>
-
-          <span class="countdown-separator">:</span>
-
-          <div class="countdown-unit">
-            <strong id="seconds">00</strong>
-            <span>Seconds</span>
-          </div>
-
+      <div class="countdown" id="countdown">
+        <div class="countdown-unit">
+          <strong id="days">00</strong>
+          <span>Days</span>
         </div>
 
-        <div class="button-row">
-          <a href="#rsvp" class="btn">RSVP</a>
-          <a href="#details" class="btn secondary">Explore</a>
+        <span class="countdown-separator">:</span>
+
+        <div class="countdown-unit">
+          <strong id="hours">00</strong>
+          <span>Hours</span>
         </div>
 
+        <span class="countdown-separator">:</span>
+
+        <div class="countdown-unit">
+          <strong id="minutes">00</strong>
+          <span>Minutes</span>
+        </div>
+
+        <span class="countdown-separator">:</span>
+
+        <div class="countdown-unit">
+          <strong id="seconds">00</strong>
+          <span>Seconds</span>
+        </div>
+      </div>
+
+      <div class="button-row">
+        <a href="#rsvp" class="btn">RSVP</a>
+        <a href="#details" class="btn secondary">Explore</a>
       </div>
     </div>
   </header>
 
-  <!-- MAIN -->
-
   <main>
-
     <section class="section" id="details">
-
       <div class="shell">
-
         <div class="section-head">
-
           <div>
             <p class="section-number">01 / Invitation</p>
             <h2>A black elegance affair.</h2>
@@ -631,96 +779,86 @@
 
           <p class="lead">
             Join us for a refined and opulent experience where tailored booths,
-            ambient lighting, curated décor and a chess-inspired aesthetic come
+            ambient lighting, curated decor and a chess-inspired aesthetic come
             together to create a night of style, meaning and celebration.
           </p>
-
         </div>
 
-        <!-- ACCORDION -->
-
         <div class="accordion">
-
-          <!-- GIFT -->
-
           <div class="accordion-item">
-
-            <button class="accordion-button">
+            <button class="accordion-button" type="button" aria-expanded="false">
               Gift Registry
-              <span>+</span>
+              <span aria-hidden="true">+</span>
             </button>
 
             <div class="accordion-content">
-
               <div class="accordion-inner">
-
-                <p>
-                  Registry links will be placed here once provided.
-                </p>
-
+                <p>Registry links will be placed here once provided.</p>
               </div>
-
             </div>
-
           </div>
 
-          <!-- LOOKBOOK -->
-
           <div class="accordion-item">
-
-            <button class="accordion-button">
+            <button class="accordion-button" type="button" aria-expanded="false">
               Look Book
-              <span>+</span>
+              <span aria-hidden="true">+</span>
             </button>
 
             <div class="accordion-content">
-
               <div class="accordion-inner">
-
-                <p>
-                  Dress code inspiration:
-                  black elegance with clean, classy and formal styling.
-                </p>
-
-                <div class="image-collage">
-
-                  <img src="assets/images/look%20book/look1.jpg">
-                  <img src="assets/images/look%20book/look2.jpg">
-                  <img src="assets/images/look%20book/look3.jpg">
-                  <img src="assets/images/look%20book/look4.jpg">
-                  <img src="assets/images/look%20book/look5.jpg">
-                  <img src="assets/images/look%20book/look6.jpg">
-
+                <div class="featured-lookbook">
+                  <img src="assets/images/look%20book/WhatsApp%20Image%202026-05-08%20at%204.48.18%20AM%20(1).jpeg" alt="Look book featured style" loading="lazy" />
                 </div>
 
+                <div class="image-collage">
+                  <img src="assets/images/look%20book/WhatsApp%20Image%202026-05-08%20at%204.48.18%20AM.jpeg" alt="Look book style 1" loading="lazy" />
+                  <img src="assets/images/look%20book/WhatsApp%20Image%202026-05-08%20at%204.48.22%20AM%20(1).jpeg" alt="Look book style 2" loading="lazy" />
+                  <img src="assets/images/look%20book/WhatsApp%20Image%202026-05-08%20at%204.48.22%20AM.jpeg" alt="Look book style 3" loading="lazy" />
+                  <img src="assets/images/look%20book/WhatsApp%20Image%202026-05-08%20at%204.48.23%20AM.jpeg" alt="Look book style 4" loading="lazy" />
+                  <img src="assets/images/look%20book/WhatsApp%20Image%202026-05-08%20at%204.48.24%20AM.jpeg" alt="Look book style 5" loading="lazy" />
+                  <img src="assets/images/look%20book/b1eee69e5488312e24e64aaed197d17e.jpg.jpeg" alt="Look book style 6" loading="lazy" />
+                  <img src="assets/images/look%20book/c63bddd0578a4271e955c9af40f36da1.jpg.jpeg" alt="Look book style 7" loading="lazy" />
+                </div>
               </div>
-
             </div>
-
           </div>
 
-          <!-- JOURNEY -->
-
           <div class="accordion-item">
-
-            <button class="accordion-button">
-              My Journey
-              <span>+</span>
+            <button class="accordion-button" type="button" aria-expanded="false">
+              Venue
+              <span aria-hidden="true">+</span>
             </button>
 
             <div class="accordion-content">
-
               <div class="accordion-inner">
+                <div class="image-collage">
+                  <img src="assets/images/venue/dscf4207fba44f3.jpg" alt="Venue image 1" loading="lazy" />
+                  <img src="assets/images/venue/dsc_3813e7a7951.jpg" alt="Venue image 2" loading="lazy" />
+                  <img src="assets/images/venue/img_0566211876c.png" alt="Venue image 3" loading="lazy" />
+                  <img src="assets/images/venue/img_844301a0d59.png" alt="Venue image 4" loading="lazy" />
+                  <img src="assets/images/venue/img_997640eaa2d.jpg" alt="Venue image 5" loading="lazy" />
+                  <img src="assets/images/venue/superior_roomsddaf65a.jpg" alt="Venue image 6" loading="lazy" />
+                </div>
+              </div>
+            </div>
+          </div>
 
+          <div class="accordion-item">
+            <button class="accordion-button" type="button" aria-expanded="false">
+              My Journey
+              <span aria-hidden="true">+</span>
+            </button>
+
+            <div class="accordion-content">
+              <div class="accordion-inner">
                 <div class="journey-text">
-
                   <p>
                     God really had to slow me down and humble me. He allowed my world to be shaken,
                     removed certain people and distractions, and placed me in a season of isolation
                     so I could confront the things I kept avoiding.
                   </p>
 
-                  <br>
+                  <br />
 
                   <p>
                     It was uncomfortable, confusing, and painful, but it was necessary.
@@ -728,147 +866,93 @@
                     shaping my heart, my mindset, and my faith from the inside out.
                   </p>
 
-                  <br>
+                  <br />
 
                   <p>
-                    Now I’m in a different place growing, maturing, and carrying a glow
-                    that comes from everything I’ve been through.
+                    Now I'm in a different place growing, maturing, and carrying a glow
+                    that comes from everything I've been through.
                   </p>
-
                 </div>
-
               </div>
-
             </div>
-
           </div>
 
-          <!-- GALLERY -->
-
           <div class="accordion-item active">
-
-            <button class="accordion-button">
+            <button class="accordion-button" type="button" aria-expanded="true">
               Gallery
-              <span>+</span>
+              <span aria-hidden="true">+</span>
             </button>
 
             <div class="accordion-content">
-
               <div class="accordion-inner">
-
                 <div class="gallery-grid">
-
-                  <img src="assets/images/gallery/21928.jpg">
-                  <img src="assets/images/gallery/21931.jpg">
-                  <img src="assets/images/gallery/21931%20(1).jpg">
-                  <img src="assets/images/gallery/21934.jpg">
-                  <img src="assets/images/gallery/21937.jpg">
-                  <img src="assets/images/gallery/21940.jpg">
-                  <img src="assets/images/gallery/21943.jpg">
-                  <img src="assets/images/gallery/21946.jpg">
-                  <img src="assets/images/gallery/21949.jpg">
-                  <img src="assets/images/gallery/21952.jpg">
-                  <img src="assets/images/gallery/21955.jpg">
-                  <img src="assets/images/gallery/21958.jpg">
-                  <img src="assets/images/gallery/21961.jpg">
-                  <img src="assets/images/gallery/21964.jpg">
-                  <img src="assets/images/gallery/21967.jpg">
-                  <img src="assets/images/gallery/21970.jpg">
-                  <img src="assets/images/gallery/21976.jpg">
-                  <img src="assets/images/gallery/21979.jpg">
-                  <img src="assets/images/gallery/21982.jpg">
-                  <img src="assets/images/gallery/21985.jpg">
-                  <img src="assets/images/gallery/21988.jpg">
-                  <img src="assets/images/gallery/22005.jpg">
-                  <img src="assets/images/gallery/22006.jpg">
-                  <img src="assets/images/gallery/22007.jpg">
-                  <img src="assets/images/gallery/22008.jpg">
-                  <img src="assets/images/gallery/22009.jpg">
-                  <img src="assets/images/venue/OIP%20(1).jpg">
-                  <img src="assets/images/venue/OIP%20(2).jpg">
-                  <img src="assets/images/venue/OIP%20(3).jpg">
-                  <img src="assets/images/venue/OIP%20(4).jpg">
-                  <img src="assets/images/venue/OIP%20(5).jpg">
-                  <img src="assets/images/venue/OIP%20(6).jpg">
-
+                  <img src="assets/images/gallery/21928.jpg" alt="Gallery image 1" loading="lazy" />
+                  <img src="assets/images/gallery/21931.jpg" alt="Gallery image 2" loading="lazy" />
+                  <img src="assets/images/gallery/21934.jpg" alt="Gallery image 3" loading="lazy" />
+                  <img src="assets/images/gallery/21937.jpg" alt="Gallery image 4" loading="lazy" />
+                  <img src="assets/images/gallery/21940.jpg" alt="Gallery image 5" loading="lazy" />
+                  <img src="assets/images/gallery/21943.jpg" alt="Gallery image 6" loading="lazy" />
+                  <img src="assets/images/gallery/21946.jpg" alt="Gallery image 7" loading="lazy" />
+                  <img src="assets/images/gallery/21949.jpg" alt="Gallery image 8" loading="lazy" />
+                  <img src="assets/images/gallery/21952.jpg" alt="Gallery image 9" loading="lazy" />
+                  <img src="assets/images/gallery/21955.jpg" alt="Gallery image 10" loading="lazy" />
+                  <img src="assets/images/gallery/21958.jpg" alt="Gallery image 11" loading="lazy" />
+                  <img src="assets/images/gallery/21961.jpg" alt="Gallery image 12" loading="lazy" />
                 </div>
 
                 <div class="lightbox" id="lightbox">
                   <div class="lightbox-content">
-                    <button class="lightbox-close" aria-label="Close">×</button>
-                    <button class="lightbox-prev" aria-label="Previous">‹</button>
-                    <img src="" alt="Gallery preview" id="lightboxImage">
-                    <button class="lightbox-next" aria-label="Next">›</button>
+                    <button class="lightbox-close" type="button" aria-label="Close">x</button>
+                    <button class="lightbox-prev" type="button" aria-label="Previous">&lt;</button>
+                    <img src="" alt="Gallery preview" id="lightboxImage" />
+                    <button class="lightbox-next" type="button" aria-label="Next">&gt;</button>
                   </div>
                 </div>
-
               </div>
-
             </div>
-
           </div>
 
-          <!-- RSVP -->
-
           <div class="accordion-item" id="rsvp">
-
-            <button class="accordion-button">
+            <button class="accordion-button" type="button" aria-expanded="false">
               RSVP
-              <span>+</span>
+              <span aria-hidden="true">+</span>
             </button>
 
             <div class="accordion-content">
-
               <div class="accordion-inner">
-
                 <div class="rsvp-card">
-
                   <p>
                     Kindly confirm your attendance to allow for guest planning and seating arrangements.
                   </p>
 
-                  <a href="https://forms.google.com" target="_blank" class="btn">
+                  <a href="https://forms.google.com" target="_blank" rel="noopener" class="btn">
                     Confirm Attendance
                   </a>
-
                 </div>
-
               </div>
-
             </div>
-
           </div>
-
         </div>
-
       </div>
-
     </section>
-
   </main>
 
   <footer>
     <div class="shell">
-      SM30 · The 30th Move · Siyabonga Mathibela Turns 30
+      Siyabonga Mathibela Turns 30 | Invitation by <a href="https://www.bytechsolutions.co.za" target="_blank" rel="noopener">Bytech Solutions</a>
     </div>
   </footer>
 
-  <!-- JAVASCRIPT -->
-
   <script>
-
-    // COUNTDOWN
-
-    const eventDate = new Date("June 13, 2026 15:00:00").getTime();
+    const eventDate = new Date("2026-06-13T15:00:00+02:00").getTime();
 
     function updateCountdown(){
-
       const now = Date.now();
       const distance = eventDate - now;
+      const countdown = document.getElementById("countdown");
 
       if(distance <= 0){
-        document.getElementById("countdown").innerHTML =
-        "<span>The celebration has begun</span>";
+        countdown.innerHTML = "<span>The celebration has begun</span>";
         return;
       }
 
@@ -886,36 +970,43 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // ACCORDION
-
     document.querySelectorAll(".accordion-button").forEach((button)=>{
-
       button.addEventListener("click", ()=>{
+        const item = button.closest(".accordion-item");
+        const wasActive = item.classList.contains("active");
 
-        button.closest(".accordion-item").classList.toggle("active");
+        document.querySelectorAll(".accordion-item").forEach((accordion)=>{
+          accordion.classList.remove("active");
+          accordion.querySelector(".accordion-button").setAttribute("aria-expanded", "false");
+        });
 
+        if(!wasActive){
+          item.classList.add("active");
+          button.setAttribute("aria-expanded", "true");
+        }
       });
-
     });
 
-    // LIGHTBOX
-
-    const galleryImages = Array.from(document.querySelectorAll('.gallery-grid img'));
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImage = document.getElementById('lightboxImage');
-    const prevButton = document.querySelector('.lightbox-prev');
-    const nextButton = document.querySelector('.lightbox-next');
-    const closeButton = document.querySelector('.lightbox-close');
+    const galleryImages = Array.from(document.querySelectorAll(".gallery-grid img"));
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const prevButton = document.querySelector(".lightbox-prev");
+    const nextButton = document.querySelector(".lightbox-next");
+    const closeButton = document.querySelector(".lightbox-close");
     let currentLightboxIndex = 0;
 
     function showLightbox(index){
       currentLightboxIndex = index;
       lightboxImage.src = galleryImages[index].src;
-      lightbox.classList.add('active');
+      lightboxImage.alt = galleryImages[index].alt;
+      lightbox.classList.add("active");
+      document.body.style.overflow = "hidden";
     }
 
     function closeLightbox(){
-      lightbox.classList.remove('active');
+      lightbox.classList.remove("active");
+      document.body.style.overflow = "";
+      lightboxImage.src = "";
     }
 
     function showPrevious(){
@@ -927,28 +1018,34 @@
     }
 
     galleryImages.forEach((image, index) => {
-      image.addEventListener('click', () => showLightbox(index));
+      image.addEventListener("click", () => showLightbox(index));
     });
 
-    prevButton.addEventListener('click', (event) => {
+    prevButton.addEventListener("click", (event) => {
       event.stopPropagation();
       showPrevious();
     });
 
-    nextButton.addEventListener('click', (event) => {
+    nextButton.addEventListener("click", (event) => {
       event.stopPropagation();
       showNext();
     });
 
-    closeButton.addEventListener('click', closeLightbox);
+    closeButton.addEventListener("click", closeLightbox);
 
-    lightbox.addEventListener('click', (event) => {
-      if (event.target === lightbox) {
+    lightbox.addEventListener("click", (event) => {
+      if(event.target === lightbox){
         closeLightbox();
       }
     });
 
-  </script>
+    document.addEventListener("keydown", (event) => {
+      if(!lightbox.classList.contains("active")) return;
 
+      if(event.key === "Escape") closeLightbox();
+      if(event.key === "ArrowLeft") showPrevious();
+      if(event.key === "ArrowRight") showNext();
+    });
+  </script>
 </body>
 </html>
