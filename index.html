@@ -9,10 +9,10 @@
 
   <meta property="og:title" content="The 30th Move | Siyabonga Mathibela" />
   <meta property="og:description" content="You are warmly invited to an exquisite evening celebrating Siyabonga Mathibela's 30th birthday." />
-  <meta property="og:image" content="assets/images/hero/SM-30-Invite.png" />
+  <meta property="og:image" content="assets/images/hero/SM-30-(Invite)%20(3).png" />
   <meta property="og:type" content="website" />
 
-  <link rel="preload" as="image" href="assets/images/hero/SM-30-Invite.png" />
+  <link rel="preload" as="image" href="assets/images/hero/SM-30-(Invite)%20(3).png" />
 
   <style>
     *{
@@ -414,29 +414,40 @@
       padding-left:22px;
     }
 
-    .featured-lookbook img{
-      width:100%;
-      aspect-ratio:16 / 10;
-      object-fit:cover;
-      object-position:center 28%;
-      border:1px solid var(--line);
+    .gift-registry-image{
+      width:min(100%, 820px);
+      margin:auto;
+      border:1px solid rgba(0,0,0,.12);
       border-radius:6px;
-      margin:20px 0;
-      animation:imagePanWide 11s ease-in-out infinite, imageGlow 4.5s ease-in-out infinite;
+      object-fit:contain;
+      background:var(--white);
+      box-shadow:0 18px 38px rgba(0,0,0,.12);
+      animation:imagePanWide 10s ease-in-out infinite, imageGlow 5s ease-in-out infinite;
     }
 
     .image-collage{
-      display:grid;
-      grid-template-columns:repeat(3, 1fr);
+      display:flex;
       gap:12px;
       margin-top:20px;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      scroll-behavior:smooth;
+      scrollbar-width:none;
+      padding-bottom:4px;
+    }
+
+    .image-collage::-webkit-scrollbar,
+    .gallery-grid::-webkit-scrollbar{
+      display:none;
     }
 
     .image-collage img{
+      flex:0 0 min(78vw, 320px);
       width:100%;
       aspect-ratio:1 / 1.25;
       object-fit:cover;
       border:1px solid var(--line);
+      scroll-snap-align:center;
       transition:transform .34s ease, filter .34s ease, box-shadow .34s ease;
       animation:imagePanPortrait 9s ease-in-out infinite, imageGlow 5s ease-in-out infinite;
     }
@@ -447,18 +458,25 @@
     }
 
     .gallery-grid{
-      display:grid;
-      grid-template-columns:1.2fr .8fr 1fr;
+      display:flex;
       gap:12px;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      scroll-behavior:smooth;
+      scrollbar-width:none;
+      padding-bottom:4px;
     }
 
     .gallery-grid img{
+      flex:0 0 min(82vw, 420px);
       width:100%;
       min-height:260px;
-      height:100%;
+      height:auto;
+      aspect-ratio:4 / 5;
       object-fit:cover;
       border:1px solid var(--line);
       cursor:pointer;
+      scroll-snap-align:center;
       transition:transform .34s ease, filter .34s ease, box-shadow .34s ease;
       animation:imagePanWide 10s ease-in-out infinite, imageGlow 5.5s ease-in-out infinite;
     }
@@ -480,11 +498,50 @@
     }
 
     .gallery-grid img:nth-child(1){
-      grid-row:span 2;
+      grid-row:auto;
     }
 
     .gallery-grid img:nth-child(4){
-      grid-column:span 2;
+      grid-column:auto;
+    }
+
+    .carousel-shell{
+      position:relative;
+    }
+
+    .carousel-button{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      z-index:2;
+      width:42px;
+      height:42px;
+      border:1px solid rgba(0,0,0,.16);
+      border-radius:50%;
+      background:rgba(248,245,239,.88);
+      color:var(--black);
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:24px;
+      line-height:1;
+      transition:background .25s ease, color .25s ease, transform .25s ease;
+    }
+
+    .carousel-button:hover,
+    .carousel-button:focus-visible{
+      background:var(--black);
+      color:var(--white);
+      transform:translateY(-50%) scale(1.06);
+    }
+
+    .carousel-button.prev{
+      left:10px;
+    }
+
+    .carousel-button.next{
+      right:10px;
     }
 
     .lightbox{
@@ -807,11 +864,22 @@
 
       .image-collage,
       .gallery-grid{
-        grid-template-columns:1fr;
+        gap:10px;
+      }
+
+      .image-collage img,
+      .gallery-grid img{
+        flex-basis:calc(100vw - 62px);
       }
 
       .gallery-grid img{
         min-height:240px;
+      }
+
+      .carousel-button{
+        width:36px;
+        height:36px;
+        font-size:20px;
       }
 
       .gallery-grid img:nth-child(1),
@@ -839,7 +907,7 @@
 
 <body>
   <header class="hero">
-    <img class="hero-invite" src="assets/images/hero/SM-30-Invite.png" alt="Siyabonga Mathibela 30th birthday invitation" />
+    <img class="hero-invite" src="assets/images/hero/SM-30-(Invite)%20(3).png" alt="Siyabonga Mathibela 30th birthday invitation" />
   </header>
 
   <section class="countdown-section" aria-label="Countdown to the celebration">
@@ -880,19 +948,6 @@
   <main>
     <section class="section" id="details">
       <div class="shell">
-        <div class="section-head">
-          <div>
-            <p class="section-number">01 / Invitation</p>
-            <h2>A black elegance affair.</h2>
-          </div>
-
-          <p class="lead">
-            Join us for a refined and opulent experience where tailored booths,
-            ambient lighting, curated decor and a chess-inspired aesthetic come
-            together to create a night of style, meaning and celebration.
-          </p>
-        </div>
-
         <div class="accordion">
           <div class="accordion-item">
             <button class="accordion-button" type="button" aria-expanded="false">
@@ -902,7 +957,7 @@
 
             <div class="accordion-content">
               <div class="accordion-inner">
-                <p>Registry links will be placed here once provided.</p>
+                <img class="gift-registry-image" src="assets/images/gift%20registry/WhatsApp%20Image%202026-05-08%20at%201.33.16%20PM.jpeg" alt="Gift registry details" loading="lazy" />
               </div>
             </div>
           </div>
@@ -915,21 +970,18 @@
 
             <div class="accordion-content">
               <div class="accordion-inner">
-                <div class="featured-lookbook">
-                  <img src="assets/images/look%20book/WhatsApp%20Image%202026-05-08%20at%204.48.18%20AM%20(1).jpeg" alt="Look book featured style" loading="lazy" />
-                </div>
-
                 <div class="image-collage">
-                  <img src="assets/images/look%20book/WhatsApp%20Image%202026-05-08%20at%204.48.18%20AM.jpeg" alt="Look book style 1" loading="lazy" />
-                  <img src="assets/images/look%20book/WhatsApp%20Image%202026-05-08%20at%204.48.22%20AM%20(1).jpeg" alt="Look book style 2" loading="lazy" />
-                  <img src="assets/images/look%20book/WhatsApp%20Image%202026-05-08%20at%204.48.22%20AM.jpeg" alt="Look book style 3" loading="lazy" />
-                  <img src="assets/images/look%20book/WhatsApp%20Image%202026-05-08%20at%204.48.23%20AM.jpeg" alt="Look book style 4" loading="lazy" />
-                  <img src="assets/images/look%20book/WhatsApp%20Image%202026-05-08%20at%204.48.24%20AM.jpeg" alt="Look book style 5" loading="lazy" />
-                  <img src="assets/images/look%20book/WhatsApp%20Image%202026-05-08%20at%204.48.20%20AM.jpeg" alt="Look book style 6" loading="lazy" />
-                  <img src="assets/images/look%20book/WhatsApp%20Image%202026-05-08%20at%204.48.21%20AM.jpeg" alt="Look book style 7" loading="lazy" />
-                  <img src="assets/images/look%20book/WhatsApp%20Image%202026-05-08%20at%204.48.25%20AM.jpeg" alt="Look book style 8" loading="lazy" />
-                  <img src="assets/images/look%20book/b1eee69e5488312e24e64aaed197d17e.jpg.jpeg" alt="Look book style 9" loading="lazy" />
-                  <img src="assets/images/look%20book/c63bddd0578a4271e955c9af40f36da1.jpg.jpeg" alt="Look book style 10" loading="lazy" />
+                  <img src="assets/images/look%20book/WhatsApp%20Image%202026-05-08%20at%204.48.18%20AM%20(1).jpeg" alt="Look book style 1" loading="lazy" />
+                  <img src="assets/images/look%20book/WhatsApp%20Image%202026-05-08%20at%204.48.18%20AM.jpeg" alt="Look book style 2" loading="lazy" />
+                  <img src="assets/images/look%20book/WhatsApp%20Image%202026-05-08%20at%204.48.22%20AM%20(1).jpeg" alt="Look book style 3" loading="lazy" />
+                  <img src="assets/images/look%20book/WhatsApp%20Image%202026-05-08%20at%204.48.22%20AM.jpeg" alt="Look book style 4" loading="lazy" />
+                  <img src="assets/images/look%20book/WhatsApp%20Image%202026-05-08%20at%204.48.23%20AM.jpeg" alt="Look book style 5" loading="lazy" />
+                  <img src="assets/images/look%20book/WhatsApp%20Image%202026-05-08%20at%204.48.24%20AM.jpeg" alt="Look book style 6" loading="lazy" />
+                  <img src="assets/images/look%20book/WhatsApp%20Image%202026-05-08%20at%204.48.20%20AM.jpeg" alt="Look book style 7" loading="lazy" />
+                  <img src="assets/images/look%20book/WhatsApp%20Image%202026-05-08%20at%204.48.21%20AM.jpeg" alt="Look book style 8" loading="lazy" />
+                  <img src="assets/images/look%20book/WhatsApp%20Image%202026-05-08%20at%204.48.25%20AM.jpeg" alt="Look book style 9" loading="lazy" />
+                  <img src="assets/images/look%20book/b1eee69e5488312e24e64aaed197d17e.jpg.jpeg" alt="Look book style 10" loading="lazy" />
+                  <img src="assets/images/look%20book/c63bddd0578a4271e955c9af40f36da1.jpg.jpeg" alt="Look book style 11" loading="lazy" />
                 </div>
               </div>
             </div>
@@ -1092,7 +1144,7 @@
     setInterval(updateCountdown, 1000);
 
     const revealTargets = document.querySelectorAll(
-      ".countdown-section, .section-head, .accordion-item, .featured-lookbook, .image-collage img, .gallery-grid img, footer"
+      ".countdown-section, .section-head, .accordion-item, .gift-registry-image, .image-collage img, .gallery-grid img, footer"
     );
 
     revealTargets.forEach((target) => target.classList.add("reveal"));
@@ -1191,6 +1243,60 @@
       if(event.key === "ArrowLeft") showPrevious();
       if(event.key === "ArrowRight") showNext();
     });
+
+    function setupCarousel(track){
+      const shell = document.createElement("div");
+      shell.className = "carousel-shell";
+      track.parentNode.insertBefore(shell, track);
+      shell.appendChild(track);
+
+      const previous = document.createElement("button");
+      previous.className = "carousel-button prev";
+      previous.type = "button";
+      previous.setAttribute("aria-label", "Previous image");
+      previous.textContent = "<";
+
+      const next = document.createElement("button");
+      next.className = "carousel-button next";
+      next.type = "button";
+      next.setAttribute("aria-label", "Next image");
+      next.textContent = ">";
+
+      shell.append(previous, next);
+
+      function scrollByCard(direction){
+        const firstImage = track.querySelector("img");
+        if(!firstImage) return;
+
+        const distance = firstImage.getBoundingClientRect().width + 12;
+        const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+        const atStart = track.scrollLeft <= 4;
+
+        if(direction > 0 && atEnd){
+          track.scrollTo({ left:0, behavior:"smooth" });
+          return;
+        }
+
+        if(direction < 0 && atStart){
+          track.scrollTo({ left:track.scrollWidth, behavior:"smooth" });
+          return;
+        }
+
+        track.scrollBy({ left:distance * direction, behavior:"smooth" });
+      }
+
+      previous.addEventListener("click", () => scrollByCard(-1));
+      next.addEventListener("click", () => scrollByCard(1));
+
+      let autoScroll = setInterval(() => scrollByCard(1), 3600);
+
+      shell.addEventListener("mouseenter", () => clearInterval(autoScroll));
+      shell.addEventListener("mouseleave", () => {
+        autoScroll = setInterval(() => scrollByCard(1), 3600);
+      });
+    }
+
+    document.querySelectorAll(".image-collage, .gallery-grid").forEach(setupCarousel);
   </script>
 </body>
 </html>
